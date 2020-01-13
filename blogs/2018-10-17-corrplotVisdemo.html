@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="muzhi" />
+
+
+<title>corrplotVis demo</title>
+
+<script src="corrplotVisdemo_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="corrplotVisdemo_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="corrplotVisdemo_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="corrplotVisdemo_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="corrplotVisdemo_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="corrplotVisdemo_files/navigation-1.1/tabsets.js"></script>
+<link href="corrplotVisdemo_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="corrplotVisdemo_files/highlightjs-9.12.0/highlight.js"></script>
+<script src="corrplotVisdemo_files/htmlwidgets-1.0/htmlwidgets.js"></script>
+<link href="corrplotVisdemo_files/jquery-ui-1.9.2/jquery-ui-1.9.2.custom.css" rel="stylesheet" />
+<script src="corrplotVisdemo_files/jquery-ui-1.9.2/jquery-ui-1.9.2.custom.min.js"></script>
+<link href="corrplotVisdemo_files/corrplot-1.0.1/corrplot.css" rel="stylesheet" />
+<script src="corrplotVisdemo_files/d3-2.5.1/d3.v2.min.js"></script>
+<script src="corrplotVisdemo_files/corrplot-binding-0.1.0/corrplot.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">corrplotVis demo</h1>
+<h4 class="author"><em>muzhi</em></h4>
+<h4 class="date"><em>2018/10/17</em></h4>
+
+</div>
+
+
+<div id="corrplotvis-intro" class="section level2">
+<h2>CorrplotVis Intro</h2>
+<p><font size="3"> CorrplotVis is a function in corrplot package bulit on package <a href="http://www.htmlwidgets.org">htmlwigets</a>. It is convenient to use corrplotVis to visualize the correlation matrix. You do not need understand a lot of parameters of corrplot function and just click the buttons to know more information about the correlation matrix. CorrplotVis is also good at the interacting with users. You can easliy insert interactive correlation matrix chart in html or rmarkdown, since corrplotVis bulit on <a href="https://d3js.org">d3.js</a>.</p>
+<p>The authors of corrplotVis function are Yang Zhou &amp; <a href="https://yangmuzhi.github.io">Muzhi Yang</a></p>
+<p>Finally, there is a lot of bugs in corrplotVis and I(Muzhi Yang) have not finish it yet. If you find some bugs or some goodideas, let me know !!!</p>
+</div>
+<div id="corrplotvis-demo" class="section level2">
+<h2>CorrplotVis demo</h2>
+<p>Now, You can use following code to install corrplotVis.</p>
+<pre class="r"><code>devtools::install_github(&quot;yangmuzhi/corrplot&quot;)</code></pre>
+<p>Have a look on mtcars datasets.</p>
+<pre class="r"><code>head(mtcars)</code></pre>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<p>CorrplotVis it!!!</p>
+<pre class="r"><code>corrplot::corrplotVis(cor(mtcars), size = c(600, 600))</code></pre>
+<div id="htmlwidget-ac4f1c825c721ce528ad" style="width:600px;height:600px;" class="corrplot html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac4f1c825c721ce528ad">{"x":{"data":{"matrixLength":11,"color":["#053061","#FFFFFF","#67001F"],"colNames":["mpg","cyl","disp","hp","drat","wt","qsec","vs","am","gear","carb"],"matrixData":[[1,-0.852161959426613,-0.847551379262479,-0.776168371826586,0.681171907806749,-0.867659376517228,0.418684033921778,0.664038919127593,0.599832429454648,0.480284757338842,-0.550925073902459],[-0.852161959426613,1,0.902032872146999,0.83244745272182,-0.69993811382877,0.782495794463241,-0.591242073768869,-0.810811796083005,-0.522607046900675,-0.492686599389471,0.526988293749643],[-0.847551379262479,0.902032872146999,1,0.790948586369806,-0.71021392716927,0.887979922058138,-0.433697880811014,-0.7104158907906,-0.591227040063948,-0.555569198562483,0.394976864868969],[-0.776168371826586,0.83244745272182,0.790948586369806,1,-0.44875911687292,0.658747887344759,-0.708223388861953,-0.72309673735245,-0.243204257185851,-0.125704258225474,0.74981247154911],[0.681171907806749,-0.69993811382877,-0.71021392716927,-0.44875911687292,1,-0.712440646697372,0.091204759651183,0.440278464955349,0.71271112722627,0.699610131934665,-0.0907897988688673],[-0.867659376517228,0.782495794463241,0.887979922058138,0.658747887344759,-0.712440646697372,1,-0.174715878713405,-0.554915677663994,-0.692495258839484,-0.583286996536648,0.427605937735487],[0.418684033921778,-0.591242073768869,-0.433697880811014,-0.708223388861953,0.091204759651183,-0.174715878713405,1,0.744535443526254,-0.229860862184883,-0.212682229720365,-0.656249228338059],[0.664038919127593,-0.810811796083005,-0.7104158907906,-0.72309673735245,0.440278464955349,-0.554915677663994,0.744535443526254,1,0.168345124585359,0.206023348733579,-0.569607141006843],[0.599832429454648,-0.522607046900675,-0.591227040063948,-0.243204257185851,0.71271112722627,-0.692495258839484,-0.229860862184883,0.168345124585359,1,0.794058760256343,0.0575343510705041],[0.480284757338842,-0.492686599389471,-0.555569198562483,-0.125704258225474,0.699610131934665,-0.583286996536648,-0.212682229720365,0.206023348733579,0.794058760256343,1,0.274072836357522],[-0.550925073902459,0.526988293749643,0.394976864868969,0.74981247154911,-0.0907897988688673,0.427605937735487,-0.656249228338059,-0.569607141006843,0.0575343510705041,0.274072836357522,1]],"orderList":{"original":[1,2,3,4,5,6,7,8,9,10,11],"AOE":[4,9,8,10,3,7,6,5,2,1,11],"FPC":[11,1,2,4,9,3,6,10,8,7,5],"hclust":[8,4,5,3,9,2,6,7,10,11,1],"name":[8,3,4,7,5,11,9,10,1,6,2]}},"size":[600,600],"CI":{"p":[[0,4.03762311574658e-09,1.09144484033474e-09,4.32215214159886e-06,1.7807076025447e-05,2.51872935620307e-08,0.0147145056505992,3.02065922201822e-05,0.00170411589747338,0.00578069270266387,0.00319381617297481],[4.03762311574658e-09,0,1.65942388954575e-09,5.62566579801011e-07,5.17426842727807e-05,1.3205519745956e-06,0.00594908683866879,2.02697733062763e-06,0.00437989597489461,0.00992246002543485,0.00200658064666542],[1.09144484033474e-09,1.65942388954575e-09,0,1.30424009784805e-05,4.9350864237558e-06,1.90156111669244e-08,0.0182987135077146,3.45077855620741e-05,0.00112248501073235,0.00302829140596717,0.00696972929202831],[4.32215214159886e-06,5.62566579801011e-07,1.30424009784805e-05,0,0.00204927566970676,0.000178732800752308,0.000350960296277312,3.69038023138211e-08,0.0359344525907593,0.07040179628903,4.71860087443489e-05],[1.7807076025447e-05,5.17426842727807e-05,4.9350864237558e-06,0.00204927566970676,0,3.78247838991184e-07,0.142621961303234,0.00346841872389714,1.22960399649939e-05,6.01857938491192e-05,0.0699815505264086],[2.51872935620307e-08,1.3205519745956e-06,1.90156111669244e-08,0.000178732800752308,3.78247838991184e-07,0,0.056276056469911,0.000460870642048669,0.000143160057510225,0.000797705425791631,0.0171329630040928],[0.0147145056505992,0.00594908683866879,0.0182987135077146,0.000350960296277312,0.142621961303234,0.056276056469911,0,0.000167336454506265,0.547379753982407,0.681500445706964,8.43816167630836e-06],[3.02065922201822e-05,2.02697733062763e-06,3.45077855620741e-05,3.69038023138211e-08,0.00346841872389714,0.000460870642048669,0.000167336454506265,0,0.0538527380509329,0.0839330611664532,9.35587347147928e-05],[0.00170411589747338,0.00437989597489461,0.00112248501073235,0.0359344525907593,1.22960399649939e-05,0.000143160057510225,0.547379753982407,0.0538527380509329,0,1.7027012604972e-07,0.305566381415323],[0.00578069270266387,0.00992246002543485,0.00302829140596717,0.07040179628903,6.01857938491192e-05,0.000797705425791631,0.681500445706964,0.0839330611664532,1.7027012604972e-07,0,0.484888442515202],[0.00319381617297481,0.00200658064666542,0.00696972929202831,4.71860087443489e-05,0.0699815505264086,0.0171329630040928,8.43816167630836e-06,9.35587347147928e-05,0.305566381415323,0.484888442515202,0]]},"rectOrderNum":{"a":[5,11],"b":[5,7,11],"c":[1,5,7,11]},"range":[100,1000]},"evals":[],"jsHooks":[]}</script>
+<p>There are also two new functions: rendercorrplot and corrplotOutput which are bulit for shiny apps. </font></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

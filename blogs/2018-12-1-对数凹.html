@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>对数凹</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<hr>
+
+<p>title: &quot;对数凹和极大似然&quot;</p>
+
+<h2 id="toc_0">date: 2018-10-17 20:00:00</h2>
+
+<h1 id="toc_1">第一部分 凹和凸</h1>
+
+<p>陈寅恪的“恪”字到底是读“que”还是“ke”呢，按现代汉语读音“恪”不是多音字，只有一个读音“ke”。但陈先生他老人家和他的学生们都读“que”，据说按照《广韵》的反切，在宋代时古汉语还是读“que”的，陈先生和他的学生们都是大佬，我们也就默认了。那么问题来了，贾平凹说他的凹字读“wa”。。。请打开凸优化这本书，把所有凹标注为wa，是不是挺有趣的呢？</p>
+
+<p>好吧，上面这个一点也不搞笑的段子权当是学<strong>秃</strong>优化后幽默感骤降的表现了。凸优化在学习的时候经常缺乏动力，一是因为因为真的比较难，而是因为我真的不知道东西有啥用啊！没有用还真么难，一句“obviously”推半天，凸优化真的会变秃！</p>
+
+<p>不过最近在统计中看到似然后，等到开始求极值时才恍然大悟，凸优化真的好，这是前人的结晶啊，这把瑞士军刀用起来真的十分顺手。本文就说说在误差服从正态分布时，求极大似然的一些细节，这些细节让我这个菜鸟受益很多。</p>
+
+<h2 id="toc_2">凹 对数凹</h2>
+
+<p>在说凹之前得说说凸，这俩是一对兄弟，一般是可以相互转换的。</p>
+
+<p><strong>凸集</strong></p>
+
+<p>有一个集合 \(C\) ，里面有任意两个点 \(x\) , \(y\), 如果这两个点之间的连线依然在 \(C\) 里面， 那么这个 \(C\) 就是凸的（convex）。用数学的符号表示就是：</p>
+
+<p>如果 \( 0 \le \theta \le 1\) ， \( x_1, x_2 \in C\), 那么 就会有  \( \theta x_1 + (1-\theta) x_2 \in C \)</p>
+
+<p>那么 \(C\) 就是凸的。</p>
+
+<p>比如一个凸集长这样</p>
+
+<p>图</p>
+
+<p><strong>凸函数</strong></p>
+
+<p>凸函数是定义在凸集上的。 如果 <strong>dom</strong> \(f\) (也就函数 \(f\) 的自变量)是一个凸集，任意对于所有的
+ \(   x, x \in \) <strong>dom</strong> \(f\), \(0 \le \theta \le 1 \) 有</p>
+
+<p>\[ f(\theta x + (1-\theta) y) \le \theta f(x) + (1-\theta) f(y)\]</p>
+
+<p>那么 \(f\) 就是凸函数（convex function），凸函数的极小值就是最小值，我们可以用很多方式来计算其最值，当函数可导且导数存在解析时，可以直接求导等于0求的最值。。但是如果每次见到一个函数都用这种原始的定义方式来判断，会非常的麻烦。好在前人已经证明了凸函数需要满足的一阶条件(First-order conditions)和二阶条件(Second-order-conditions)，只要证明一个函数的满足这些条件即可。同时还有很多保凸的运算如几个凸函数与非负数相乘再相加，则得到的新的函数依然是凸的。</p>
+
+<p>二阶条件：</p>
+
+<p>若\(f\) 满足\[ \nabla ^2 f(x) \geq 0 \]，则</p>
+
+<p>如图的二次函数就是一个凸函数\(f\)是凸的。</p>
+
+<p><strong>凹函数 和 对数凹</strong></p>
+
+<p>凹函数和凸函数就在一个地方不一样，如果一个函数给它乘以一个负一， \(-f\) 如果是 凸函数，那么 \(f\) 就是凹函数（concave）。</p>
+
+<p>重点来了，如果 \(f\) 再定义域内都有 \(f(x) &gt;0\) ，且 \( log f \)是凹的，那么 \(f\) 就是对数凹（logconcave）</p>
+
+<h2 id="toc_3">两个函数的凸和凹</h2>
+
+<p><strong>二次型</strong></p>
+
+<p>二次型的矩阵形式可以写成
+  \( x^T Ax\)
+， 它可以看成可以关于 \(x\) 的一个二次型，一般会用它来判断 \(A\) 是否正定， 如果二次型 \( x^T Ax &gt; 0\) 则说明 \( A\) 正定，如果 \( x^T Ax \geq 0\) 则说明 \(A\) 半正定，正定矩阵有很多很好性质，比如对称，可逆等等。</p>
+
+<p>判断 \( x^T Ax\) 是凹还是凸可以使用二阶条件，\( \nabla ^2 f(x) \geq 0\) 即Hessian矩阵半正定。</p>
+
+<p>我们先对 \(f(x)\)求一阶梯度</p>
+
+<p>\[
+\begin{align}
+\nabla f(x) &amp;= \nabla x^TAx\\
+&amp;=(A^T+A)x
+\end{align}
+\]</p>
+
+<p>在对\(x\)求二阶梯度
+\[
+\begin{align}
+\nabla^2 f(x) &amp;= \nabla(A + A^T)x\\
+&amp;=A^T+A
+\end{align}
+\]</p>
+
+<p>当 \(A\) 为对称矩阵时，\( \nabla ^2 f(x)=2A\)。</p>
+
+<p>举一个后面可以用的例子，如\[ x^T \Sigma^{-1}x \]是关于\(x\)的二次型，其中 \(\Sigma\)是一个协方差矩阵，所以 \(\Sigma\)为正定矩阵。可以讲\(\Sigma\)展开：
+\[
+\begin{align}
+x^T\Sigma x &amp;=x^T\Sigma\Sigma^{-1}\Sigma x \\
+&amp; = (\Sigma x)^T\Sigma^{-1}(\Sigma x)
+\end{align}
+\]
+这说明 \( \Sigma^{-1}\)也是正定的。因此\( x^T \Sigma^{-1}x \)的Hessian矩阵\( \nabla ^2 f(x)=2\Sigma^{-1}\)为正定矩阵，\( x^T \Sigma^{-1}x \)对\(x\)是凸的。</p>
+
+<p><strong>仿射</strong></p>
+
+<p>依然是这个\( x^T Ax \)， 但是这次不是二次型了，为什么呢？因为二次型是对\(x\)来讲,如果我们把自变量变成\(A\),那么显然\( x^T Ax \)对\(A\)是线性的。按照凸优化的划分，\( x^T Ax \)是仿射（affine）的。放射又一个特点，那就是它既是凸的也是凹的。</p>
+
+<p>举个例子，如果一个函数\(f(\Sigma^{-1})=x^T \Sigma^{-1}x \), 则\(f\)是仿射，如果有一个函数\(g\)， 那么\(g + f\)是凸还是凹需要看\(g\)，如果\(g\)是凸的则\(g + f\)为凸，如果\(g\)为凹则\(g + f\)为凹。</p>
+
+<p><strong>对数行列式</strong></p>
+
+<p>对数行列式（log-determinant）是指函数\(f(X)=log\,det\,X\)，其中\(X\)是任意一个矩阵，这样的函数是凹的，也就是说\(det\,X\)是对数凹的。这是一个很重要的结论，下来就来证证它。</p>
+
+<p>\(f(X)=log\,det\,X\)的\(X\)是一个矩阵，如果对其求二阶梯度，来判断是否符合条件是比较困难的。我们可以使用\(X= Z +tV\)来作替换，把自变量转换为\(t\)，其中\(Z，V\)和为矩阵，\(t\)为一个一维变量。这样可以把对\(X\)求导转换为对\(t\)求导，以简化问题。</p>
+
+<p>首先我们来说说为什么可以这样做。根据凸函数的定义，凸函数应满足这个定义：</p>
+
+<p>\[ f(\theta x + (1-\theta) y) \le \theta f(x) + (1-\theta) f(y)\]</p>
+
+<p>我们把左项可以进行一些神奇的变换：
+\[
+\begin{align}
+f(\theta x + (1-\theta) y) &amp;=f(y+\theta(x-y) )\\
+&amp;=f(z +tv) \end{align}
+\]
+z为<strong>dom</strong> \(f\)上任意一个点，\(v\)与自变量纬度一样的常量，\(t\)是任意的实数。这就验证了我们可以使用线性替换\(X= Z +tV\)来简化问题。
+经过替换后， 我们可以进行如下变化。</p>
+
+<p>\[
+\begin{align}
+log\,det\,X &amp;= log\,det\,(Z + tV)\\
+&amp;=log\,det\,(Z^{1/2}(I+tZ^{-1/2}VZ^{-1})Z^{1/2})\\
+&amp;= log\,((det\,Z^{1/2})(det\,(I+tZ^{-1/2}VZ^{-1}))det\,Z^{1/2})\\
+&amp;= log\,(det(Z^{1/2}Z^{1/2})det\,(I+tZ^{-1/2}VZ^{-1}))\\
+&amp;= log\,det(I+tZ^{-1/2}VZ^{-1/2})+log\,det\,Z
+ \end{align}
+\]</p>
+
+<p>\(log\,det\,Z\)是一个常数，对\(t\)求导为0。经过变换之后的式子是一个关于\(t\)的函数，我们将其命名为\(g(t)\)设\(\lambda_{1}...\lambda_{n}\)是\(tZ^{-1/2}VZ^{-1/2}\)的特征根（eigenvalues)。因此化简得，</p>
+
+<p>\[log\,det(I+tZ^{-1/2}VZ^{-1/2})= \sum_{i=1}^nlog(1+t\lambda_{i})\]</p>
+
+<p>因此求二阶梯度可得</p>
+
+<p>\[\nabla g(t)=\sum_{i=1}^n \frac{\lambda_i}{1+t\lambda_i}\]
+\[\nabla^2 g(t)=-\sum_{i=1}^n \frac{\lambda_i^2}{(1+t\lambda_i)^2}\]</p>
+
+<p>因此\(\nabla^2 g(t)\le0\)，因此\(f(X)=log\,det\,X\)是凹的，也可以说\(det\,X\)是对数凹的。</p>
+
+
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
